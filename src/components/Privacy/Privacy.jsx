@@ -13,7 +13,7 @@ function Privacy({ setSection }) {
         <p><strong>1. Administrator danych osobowych</strong></p>
         <p>
           Administratorem danych osobowych jest <strong>Over The Moon Wedding Planner</strong> 
-          (dalej „Administrator”). Kontakt: <a href="mailto:overthemoon@gmail.com">overthemoon@gmail.com</a>.
+          (Małgorzata Franczyk). Kontakt: <a href="mailto:weddingplanner.gosiafranczyk@gmail.com">overthemoon@gmail.com</a>.
         </p>
 
         <p><strong>2. Zakres przetwarzanych danych</strong></p>

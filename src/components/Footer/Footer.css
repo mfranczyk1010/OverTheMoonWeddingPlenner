@@ -44,3 +44,43 @@
     font-size: 0.95rem;
   }
 }
+/* === PODPIS AUTORA === */
+.footer-author {
+  position: absolute;
+  left: 20px;
+  bottom: 8px;
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.55);
+  font-family: "Roboto Condensed", sans-serif;
+  user-select: none;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* 🔹 domyślnie w jednej linii */
+}
+
+.footer-author strong {
+  color: #d8c3a5;
+  font-weight: 600;
+}
+
+.footer-author:hover {
+  color: #000;
+}
+
+/* 🔹 Przy mniejszych ekranach — łamie się po dwukropku */
+@media (max-width: 600px) {
+  .footer-author {
+    white-space: normal; /* pozwala na łamanie tekstu */
+    max-width: 140px;    /* ogranicza szerokość, wymusza zawinięcie */
+    line-height: 1.3;
+  }
+
+  .footer-author strong::before {
+    content: "\A";       /* 🔹 łamanie linii po dwukropku */
+    white-space: pre;
+  }
+}
+
+.footer-wrapper {
+  position: relative; /* ✅ wymagane dla absolutnego pozycjonowania */
+}

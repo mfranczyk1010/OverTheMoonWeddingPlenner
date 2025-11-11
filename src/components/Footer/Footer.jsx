@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import { FaInstagram } from "react-icons/fa";
 
 function Footer({ setSection }) {
   return (
@@ -16,6 +17,11 @@ function Footer({ setSection }) {
           Polityka Prywatności
         </p>
       </div>
+
+      {/* 🔹 PODPIS W LEWYM DOLNYM ROGU */}
+      <p className="footer-author">
+        Strona wykonana przez: <strong>Maciej Franczyk</strong>
+      </p>
     </footer>
   );
 }
