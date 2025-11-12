@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "./Navbar.css";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import { FaInstagram, FaBars, FaTimes } from "react-icons/fa";
@@ -7,25 +7,35 @@ function Navigation({ setSection }) {
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("about");
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null); // 🔹 referencja do menu
 
   useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 🔹 Funkcja przełączania sekcji + przewijanie do góry
+  // 🔹 Kliknięcie poza menu zamyka je
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (menuOpen && menuRef.current && !menuRef.current.contains(e.target)) {
+        setMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [menuOpen]);
+
+  // 🔹 Przełączanie sekcji i przewijanie do góry
   const handleNavClick = (section) => {
     setSection(section);
     setActiveSection(section);
     setMenuOpen(false);
-    window.scrollTo({ top: 0, behavior: "smooth" }); // 👈 dodane
+    window.scrollTo({ top: 0, behavior: "smooth" });
   };
 
   return (
-    <nav className={`navbar-custom ${scrolled ? "scrolled" : ""}`}>
+    <nav className={`navbar-custom ${scrolled ? "scrolled" : ""}`} ref={menuRef}>
       <div className="navbar-top">
         <h1 className="navbar-logo" onClick={() => handleNavClick("about")}>
           Over The Moon

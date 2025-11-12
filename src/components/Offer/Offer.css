@@ -102,15 +102,6 @@
   pointer-events: none;
 }
 
-@media (max-width: 992px) {
-  .offer-card-split {
-    flex-direction: column;
-  }
-  .offer-right {
-    height: 260px;
-  }
-}
-
 /* ===== LISTA ===== */
 .offer-list {
   list-style: none;
@@ -287,6 +278,93 @@
     margin-top: 5px;
   }
    .offer-right::before {
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 250, 245, 1) 0%,
+      rgba(255, 250, 245, 0.85) 20%,
+      rgba(255, 250, 245, 0.4) 50%,
+      rgba(255, 250, 245, 0.15) 80%,
+      rgba(255, 250, 245, 0) 100%
+    );
+  }
+}
+/* === TABLETY / LAPTOPY MAŁE (max 992px) === */
+@media (max-width: 992px) {
+  .offer-section {
+    padding: 70px 0;
+  }
+
+  .offer-title {
+    font-size: 3rem;
+    text-align: center;
+  }
+
+  .offer-desc {
+    font-size: 1.05rem;
+    max-width: 85%;
+    margin: 0 auto 30px;
+  }
+
+  .offer-cards-wrapper {
+    gap: 50px;
+  }
+
+  .offer-card-split {
+    flex-direction: column;
+    width: 92%;
+    border-radius: 14px;
+    box-shadow: 0 8px 18px rgba(216, 195, 165, 0.3);
+    overflow: hidden;
+  }
+
+  .offer-left {
+    flex: none;
+    padding: 50px 35px;
+    text-align: center;
+    align-items: center;
+  }
+
+  .offer-card-title {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 18px;
+  }
+
+  .offer-right {
+    flex: none;
+    height: 280px;
+    width: 100%;
+    background-position: center center;
+    background-size: cover;
+  }
+
+  .offer-list {
+    text-align: left;
+    padding-left: 18px;
+    margin: 0 auto;
+    max-width: 90%;
+  }
+
+  .offer-list li {
+    font-size: 1rem;
+    line-height: 1.75;
+  }
+
+  .offer-toggle-btn {
+    font-size: 1.05rem;
+  }
+
+  .offer-footer {
+    font-size: 1.05rem;
+    text-align: center;
+  }
+
+  .offer-contact-link {
+    display: inline-block;
+    margin-top: 6px;
+  }
+
+  .offer-right::before {
     background: linear-gradient(
       to bottom,
       rgba(255, 250, 245, 1) 0%,

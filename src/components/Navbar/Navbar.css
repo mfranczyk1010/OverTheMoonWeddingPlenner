@@ -28,7 +28,7 @@
   flex: 1;
   text-align: center;
   font-family: "tytulowa", serif;
-  font-size: 6rem;
+ font-size: clamp(2rem, 6vw, 6rem); /* min 2rem, max 6rem */
   color: #000;
   letter-spacing: 2px;
   margin: 0;
@@ -38,15 +38,6 @@
   white-space: nowrap; /* 🔹 zawsze w jednej linii */
 }
 
-/* 🔹 tylko przy bardzo małych ekranach pozwalamy na łamanie */
-@media (max-width: 420px) {
-  .navbar-logo {
-    white-space: normal;
-    line-height: 1.1;
-    word-break: keep-all;
-    font-size: 3rem;
-  }
-}
 
 .navbar-logo:hover {
   color: #d8c3a5;
@@ -147,6 +138,7 @@
   .navbar-logo {
     font-size: 4rem;
   }
+  
 
   .menu-toggle {
     display: block;
@@ -191,5 +183,36 @@
 
   .nav-item-custom {
     font-size: 1.6rem;
+  }
+}
+
+/* 🔹 bardzo małe ekrany — logo zawsze w jednej linii, tylko mniejsze */
+@media (max-width: 480px) {
+  .navbar-logo {
+    white-space: nowrap;
+    line-height: 1;
+    font-size: 2.4rem; /* dopasuj np. 2.2–2.6 w zależności od wyglądu */
+    letter-spacing: 1px; /* lekkie zwężenie liter dla lepszej czytelności */
+  }
+}
+/* 📱 bardzo małe ekrany — logo nad hamburgerem */
+@media (max-width: 420px) {
+  .navbar-top {
+    flex-direction: column;       /* logo nad hamburgerem */
+    justify-content: center;
+    align-items: center;
+    gap: 6px;                     /* delikatny odstęp między logo a ikoną */
+    padding: 10px 0;
+  }
+
+  .navbar-logo {
+    font-size: 2.2rem;            /* nieco mniejsze, żeby się zmieściło */
+    margin-bottom: 4px;
+  }
+
+  .menu-toggle {
+    display: block;               /* upewniamy się, że hamburger jest widoczny */
+    margin-left: 0;               /* wyśrodkowanie */
+    font-size: 2rem;
   }
 }

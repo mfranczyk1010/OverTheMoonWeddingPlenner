@@ -92,12 +92,12 @@ body {
 
 @media (max-width: 420px) {
   .app-wrapper {
-    padding-top: 170px;
+    padding-top: 120px;
   }
 }
 
 
-tytułów globalnych */
+
 h1, h2, h3, h4 {
   font-family: "tytulowa", serif;
   color: #000;
