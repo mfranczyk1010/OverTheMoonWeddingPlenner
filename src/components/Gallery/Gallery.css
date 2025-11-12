@@ -6,9 +6,10 @@
 
 /* poszerzamy bootstrapowy container, żeby 4 kolumny się zmieściły */
 .gallery-section .container {
-  max-width: 1600px; /* możesz zwiększyć/zmniejszyć wg potrzeb */
+  max-width: 1600px;
 }
 
+/* === TYTUŁ === */
 .gallery-title {
   font-family: "tytulowa", serif;
   font-weight: 500;
@@ -16,6 +17,7 @@
   color: #000000;
   position: relative;
   padding-bottom: 10px;
+  text-align: center;
 }
 
 .gallery-title::after {
@@ -38,29 +40,29 @@
 /* === GRID === */
 .gallery-grid {
   display: grid;
-  gap: 40px;                 /* duże odstępy między zdjęciami */
-  justify-items: center;     /* wyśrodkowanie zawartości kolumny */
+  justify-items: center;
   align-items: start;
-  grid-template-columns: repeat(4, 1fr); /* 4 w rzędzie na desktopie */
-  padding: 0 20px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px; /* 🔹 mniejsze odstępy — większe zdjęcia */
+  padding: 0 15px;
 }
 
-/* Każdy item to pionowy prostokąt — bez SZTYWNEJ szerokości! */
+/* === ITEM === */
 .gallery-item {
   width: 100%;
-  max-width: 520px;     /* limitujemy szerokość jak wcześniej */
-  aspect-ratio: 5 / 7;  /* zbliżone do 520x730 (pion) */
-  padding: 10px;
+  max-width: 450px;
+  aspect-ratio: 4 / 5; /* 🔹 proporcje nieco szersze i większe */
+  padding: 4px;
   box-sizing: border-box;
 }
 
-/* Zachowujemy TWÓJ efekt hover i obramowanie, bez zaokrągleń */
+/* === OBRAZ === */
 .gallery-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border: 2px solid #e5e5e5;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
   transition: all 0.3s ease;
 }
 
@@ -70,47 +72,77 @@
   border-color: #d8c3a5;
 }
 
-/* ===== RESPONSYWNOŚĆ ===== */
+/* === RESPONSYWNOŚĆ === */
 
-/* 3 kolumny */
+/* 3 kolumny (duże laptopy) */
 @media (max-width: 1400px) {
   .gallery-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 35px;
+    gap: 20px;
   }
 }
 
-/* 2 kolumny */
+/* 2 kolumny (tablety, mniejsze laptopy) */
 @media (max-width: 1100px) {
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
+    gap: 18px;
+    padding: 0 10px;
+  }
+
+  .gallery-item {
+    aspect-ratio: 4 / 5;
+    max-width: 100%;
   }
 }
-
-/* 1 kolumna – szeroko, ale wciąż pionowy prostokąt */
+/* 2 kolumny na wszystkich telefonach */
 @media (max-width: 768px) {
   .gallery-grid {
-    grid-template-columns: 1fr;
-    gap: 25px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px; /* 🔹 mniejsze odstępy między zdjęciami */
+    padding: 0 4px; /* 🔹 minimalny margines od krawędzi ekranu */
   }
+
   .gallery-item {
-    max-width: 480px;  /* trochę węższe na tabletach */
-    aspect-ratio: 5 / 7;
-    padding: 5px;
+    aspect-ratio: 3.5 / 5; /* 🔹 nieco wyższe, żeby wyglądały lepiej */
+    padding: 1.5px; /* 🔹 minimalne wewnętrzne marginesy */
+    max-width: 100%;
+  }
+
+  .gallery-img {
+    border-width: 1px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .gallery-title {
+    font-size: 2.6rem;
   }
 }
 
-/* bardzo małe telefony */
+/* bardzo małe telefony (do 480px) */
 @media (max-width: 480px) {
-  .gallery-item {
-    max-width: 95%;
-    aspect-ratio: 5 / 7;
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px; /* 🔹 bardzo małe odstępy */
+    padding: 0 2px; /* 🔹 zdjęcia niemal dotykają krawędzi ekranu */
   }
+
+  .gallery-item {
+    aspect-ratio: 3.4 / 5; /* 🔹 delikatne dopasowanie proporcji */
+    padding: 1px;
+  }
+
+  .gallery-img {
+    border-width: 1px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
   .gallery-title {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 }
+
+
 /* === LIGHTBOX === */
 .lightbox-overlay {
   position: fixed;
@@ -205,7 +237,7 @@
   to { transform: scale(1); opacity: 1; }
 }
 
-/* === RESPONSYWNOŚĆ === */
+/* === LIGHTBOX RESPONSYWNOŚĆ === */
 @media (max-width: 992px) {
   .lightbox-prev { left: 10px; }
   .lightbox-next { right: 10px; }
